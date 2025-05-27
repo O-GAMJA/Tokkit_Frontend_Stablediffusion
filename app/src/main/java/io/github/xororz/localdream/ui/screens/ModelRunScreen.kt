@@ -321,6 +321,7 @@ fun ModelRunScreen(
     externalPrompt: String? = null,
     sourceApp: String? = null
 ) {
+
     val serviceState by BackgroundGenerationService.generationState.collectAsState()
     val backendState by BackendService.backendState.collectAsState()
     val context = LocalContext.current
@@ -334,6 +335,21 @@ fun ModelRunScreen(
         TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val focusManager = LocalFocusManager.current
     val interactionSource = remember { MutableInteractionSource() }
+
+    // Intent에서 받은 데이터들을 저장할 변수
+    val activity = context as? android.app.Activity
+    val originalIntent = activity?.intent
+
+    val receivedMarkdownContent = remember { originalIntent?.getStringExtra("MARKDOWN_CONTENT") }
+    val receivedConversationText = remember { originalIntent?.getStringExtra("CONVERSATION_TEXT") }
+    val receivedNoteTitle = remember { originalIntent?.getStringExtra("NOTE_TITLE") }
+    val receivedSelectedTags = remember { originalIntent?.getStringArrayListExtra("SELECTED_TAGS") }
+    val receivedSelectedPath = remember { originalIntent?.getStringExtra("SELECTED_PATH") }
+    val receivedDirectoryId = remember { originalIntent?.getIntExtra("SELECTED_DIRECTORY_ID", -1) ?: -1 }
+    val receivedIsPublic = remember { originalIntent?.getBooleanExtra("IS_PUBLIC", true) ?: true }
+    val receivedExistingImageUrl = remember { originalIntent?.getStringExtra("EXISTING_IMAGE_URL") }
+    val receivedExistingS3ImageKey = remember { originalIntent?.getStringExtra("EXISTING_S3_IMAGE_KEY") }
+
 
     var showResetConfirmDialog by remember { mutableStateOf(false) }
 
@@ -619,10 +635,42 @@ fun ModelRunScreen(
                     putExtra("GENERATED_IMAGE_PATH", tempFile.absolutePath)
                     putExtra("IS_TEMP_FILE", true) // 임시 파일임을 표시
 
-                    // 원본 Intent에서 받은 데이터들을 다시 전달
-                    externalPrompt?.let {
-                        putExtra("NOTE_CONTENT", it)
+                    // 원본 Intent에서 받은 모든 데이터들을 다시 전달
+                    receivedMarkdownContent?.let {
                         putExtra("MARKDOWN_CONTENT", it)
+                        putExtra("NOTE_CONTENT", it) // 호환성을 위해 둘 다 설정
+                    }
+
+                    receivedConversationText?.let {
+                        putExtra("CONVERSATION_TEXT", it)
+                    }
+
+                    receivedNoteTitle?.let {
+                        putExtra("NOTE_TITLE", it)
+                    }
+
+                    // NoteDetailsActivity 상태 정보들도 전달
+                    receivedSelectedTags?.let {
+                        putStringArrayListExtra("SELECTED_TAGS", it)
+                    }
+
+                    receivedSelectedPath?.let {
+                        putExtra("SELECTED_PATH", it)
+                    }
+
+                    if (receivedDirectoryId != null && receivedDirectoryId != -1) {
+                        putExtra("SELECTED_DIRECTORY_ID", receivedDirectoryId)
+                    }
+
+                    putExtra("IS_PUBLIC", receivedIsPublic)
+
+                    // 기존 이미지 정보 전달
+                    receivedExistingImageUrl?.let {
+                        putExtra("IMAGE_URL", it)
+                    }
+
+                    receivedExistingS3ImageKey?.let {
+                        putExtra("S3_IMAGE_KEY", it)
                     }
 
                     // sourceApp이 tokkit인 경우 추가 데이터 포함
@@ -634,11 +682,18 @@ fun ModelRunScreen(
                             } else {
                                 prompt
                             }
-                            putExtra("NOTE_TITLE", title)
+                            // NOTE_TITLE이 이미 있으면 덮어쓰지 않음
+                            if (receivedNoteTitle.isNullOrEmpty()) {
+                                putExtra("NOTE_TITLE", title)
+                            }
                         }
 
                         // 대화 텍스트 (프롬프트 기반)
-                        externalPrompt?.let { putExtra("CONVERSATION_TEXT", "Generated from: $it") }
+                        if (receivedConversationText.isNullOrEmpty()) {
+                            externalPrompt?.let {
+                                putExtra("CONVERSATION_TEXT", "Generated from: $it")
+                            }
+                        }
                     }
 
                     // 새로운 태스크로 시작하도록 플래그 설정
@@ -647,6 +702,13 @@ fun ModelRunScreen(
                 }
 
                 Log.d("LocalDream", "인텐트 전송 시작")
+                Log.d("LocalDream", "전달할 데이터:")
+                Log.d("LocalDream", "- MARKDOWN_CONTENT: ${resultIntent.getStringExtra("MARKDOWN_CONTENT")?.take(50)}...")
+                Log.d("LocalDream", "- CONVERSATION_TEXT: ${resultIntent.getStringExtra("CONVERSATION_TEXT")?.take(50)}...")
+                Log.d("LocalDream", "- NOTE_TITLE: ${resultIntent.getStringExtra("NOTE_TITLE")}")
+                Log.d("LocalDream", "- SELECTED_TAGS: ${resultIntent.getStringArrayListExtra("SELECTED_TAGS")}")
+                Log.d("LocalDream", "- SELECTED_PATH: ${resultIntent.getStringExtra("SELECTED_PATH")}")
+
                 context.startActivity(resultIntent)
                 Log.d("LocalDream", "인텐트 전송 완료")
 
