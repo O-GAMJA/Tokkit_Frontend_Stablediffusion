@@ -3,120 +3,156 @@
     <string name="app_name">Tokkit Stable</string>
 
     <!-- Models -->
-    <string name="anythingv5_description">Anime Image Generation</string>
-    <string name="chilloutmix_description">ChilloutMix Series</string>
-    <string name="qteamix_description">Chibi Style Anime</string>
-    <string name="cuteyukimix_description">Cute Style Anime</string>
-    <string name="absolutereality_description">Realistic Image Generation</string>
-    <string name="sd21_description">General Image Generation</string>
-    <string name="ponyv55_description">Pony Diffusion Series</string>
+    <string name="anythingv5_description">애니메 이미지 생성</string>
+    <string name="chilloutmix_description">ChilloutMix 시리즈</string>
+    <string name="qteamix_description">치비 스타일 애니메</string>
+    <string name="cuteyukimix_description">귀여운 스타일 애니메</string>
+    <string name="absolutereality_description">사실적 이미지 생성</string>
+    <string name="sd21_description">일반 이미지 생성</string>
+    <string name="ponyv55_description">Pony Diffusion 시리즈</string>
 
-    <!-- Models -->
-    <string name="backend_notify">Model Backend Service Running</string>
-    <string name="backend_notify_title">SD Model Backend</string>
-    <string name="generating_notify">Image Generating…</string>
+    <!-- Service Notifications -->
+    <string name="backend_notify">모델 백엔드 서비스 실행 중</string>
+    <string name="backend_notify_title">SD 모델 백엔드</string>
+    <string name="generating_notify">이미지 생성 중…</string>
 
     <!-- Common -->
-    <string name="settings">Settings</string>
-    <string name="confirm">Confirm</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="back">Back</string>
-    <string name="close">Close</string>
-    <string name="delete">Delete</string>
-    <string name="delete_model">Delete Model</string>
-    <string name="delete_confirm">Delete selected %s models? This action cannot be undone.</string>
-    <string name="got_it">Got It!</string>
-    <string name="about_app">Note</string>
-    <string name="must_read">This APP supports running stable diffusion image generation on CPU and some Qualcomm NPUs.\n\nIf your chip is not one of the following, you can only run it on CPU\n\nSupported NPU list:\n- Snapdragon 8 Gen 1\n- Snapdragon 8 Gen 2\n- Snapdragon 8 Gen 3\n- Snapdragon 8 Elite</string>
-    <string name="help">help</string>
+    <string name="settings">설정</string>
+    <string name="confirm">확인</string>
+    <string name="cancel">취소</string>
+    <string name="save">저장</string>
+    <string name="back">뒤로</string>
+    <string name="close">닫기</string>
+    <string name="delete">삭제</string>
+    <string name="delete_model">모델 삭제</string>
+    <string name="delete_confirm">선택한 %s개 모델을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.</string>
+    <string name="got_it">알겠습니다!</string>
+    <string name="about_app">안내</string>
+    <string name="must_read">이 앱은 CPU와 일부 퀄컴 NPU에서 stable diffusion 이미지 생성을 지원합니다.\n\n다음 칩이 아닌 경우 CPU에서만 실행할 수 있습니다\n\n지원되는 NPU 목록:\n- Snapdragon 8 Gen 1\n- Snapdragon 8 Gen 2\n- Snapdragon 8 Gen 3\n- Snapdragon 8 Elite</string>
+    <string name="help">도움말</string>
 
     <!-- Model List Screen -->
-    <string name="available_models">Available Models</string>
-    <string name="selected_items">%d Selected</string>
-    <string name="download_settings">Download Settings</string>
-    <string name="download">Download</string>
-    <string name="download_from">Download From</string>
-    <string name="download_settings_hint">Download from huggingface or other mirror url</string>
-    <string name="model_size">Total Size: ~%s</string>
-    <string name="downloaded">Downloaded</string>
-    <string name="partially_downloaded">Partially Downloaded</string>
-    <string name="continue_download">Continue Download</string>
-    <string name="continue_download_hint">Model "%1$s" is partially downloaded. Continue downloading the remaining files?</string>
-    <string name="downloading_file">Downloading file %1$d/%2$d: %3$s</string>
-    <string name="delete_success">Deleted</string>
-    <string name="delete_failed">Error in deletion</string>
-    <string name="cannot_download">Cannot Download</string>
-    <string name="cannot_download_hint">A model is being downloaded, please wait.</string>
-    <string name="download_model">Download Model</string>
-    <string name="download_model_hint">Are you sure to download %s ? Please do not exit the application during the download process.</string>
-    <string name="download_done">Download Finished</string>
-    <string name="unsupport_npu">Your device is not supported. Try the CPU model please.</string>
-    <string name="cpu_models">CPU Models</string>
-    <string name="npu_models">NPU Models</string>
-    <string name="no_cpu_models">No Models</string>
-    <string name="no_npu_models">No Models</string>
-    <string name="img2img_hint">Use img2img feature. Turn off if you don\'t need or encounter any problems.</string>
+    <string name="available_models">사용 가능한 모델</string>
+    <string name="selected_items">%d개 선택됨</string>
+    <string name="download_settings">다운로드 설정</string>
+    <string name="download">다운로드</string>
+    <string name="download_from">다운로드 소스</string>
+    <string name="download_settings_hint">허깅페이스 또는 다른 미러 URL에서 다운로드</string>
+    <string name="model_size">전체 크기: ~%s</string>
+    <string name="downloaded">다운로드 완료</string>
+    <string name="partially_downloaded">부분 다운로드됨</string>
+    <string name="continue_download">다운로드 계속</string>
+    <string name="continue_download_hint">모델 "%1$s"이(가) 부분적으로 다운로드되었습니다. 나머지 파일을 계속 다운로드하시겠습니까?</string>
+    <string name="downloading_file">파일 다운로드 중 %1$d/%2$d: %3$s</string>
+    <string name="delete_success">삭제됨</string>
+    <string name="delete_failed">삭제 중 오류</string>
+    <string name="cannot_download">다운로드할 수 없음</string>
+    <string name="cannot_download_hint">모델을 다운로드 중입니다. 잠시 기다려 주세요.</string>
+    <string name="download_model">모델 다운로드</string>
+    <string name="download_model_hint">%s를 다운로드하시겠습니까? 다운로드 중에는 앱을 종료하지 마세요.</string>
+    <string name="download_done">다운로드 완료</string>
+    <string name="unsupport_npu">지원되지 않는 기기입니다. CPU 모델을 사용해 보세요.</string>
+    <string name="cpu_models">CPU 모델</string>
+    <string name="npu_models">NPU 모델</string>
+    <string name="no_cpu_models">모델 없음</string>
+    <string name="no_npu_models">모델 없음</string>
+    <string name="img2img_hint">img2img 기능을 사용합니다. 필요하지 않거나 문제가 발생하면 끄세요.</string>
 
     <!-- Crop Screen -->
-    <string name="crop_image">Crop Image</string>
-    <string name="crop_hint">Drag to adjust the crop area</string>
+    <string name="crop_image">이미지 자르기</string>
+    <string name="crop_hint">드래그하여 자를 영역을 조정하세요</string>
 
     <!-- Inpaint Screen -->
-    <string name="set_inpaint_area">Set Inpaint Area</string>
-    <string name="inpaint_hint">Paint over the areas you want to inpaint</string>
-    <string name="brush_size">Brush Size</string>
-    <string name="undo">Undo</string>
-    <string name="redo">Redo</string>
-    <string name="clear">Clear</string>
-    <string name="brush_color">Brush Color</string>
+    <string name="set_inpaint_area">인페인트 영역 설정</string>
+    <string name="inpaint_hint">인페인트할 영역에 그림을 그리세요</string>
+    <string name="brush_size">브러시 크기</string>
+    <string name="undo">실행 취소</string>
+    <string name="redo">다시 실행</string>
+    <string name="clear">지우기</string>
+    <string name="brush_color">브러시 색상</string>
 
     <!-- Run Screen -->
-    <string name="prompt_settings">Prompts</string>
-    <string name="advanced_settings">Advanced</string>
-    <string name="advanced_settings_title">Advanced Settings</string>
-    <string name="image_prompt">Image Generation Prompt</string>
-    <string name="negative_prompt">Negative Prompt</string>
-    <string name="generate_image">Generate</string>
-    <string name="generating">Generating image…</string>
+    <string name="prompt_settings">프롬프트</string>
+    <string name="advanced_settings">고급 설정</string>
+    <string name="advanced_settings_title">고급 설정</string>
+    <string name="image_prompt">이미지 생성 프롬프트</string>
+    <string name="negative_prompt">네거티브 프롬프트</string>
+    <string name="generate_image">생성</string>
+    <string name="generating">이미지 생성 중…</string>
     <string name="generation_progress">%d%%</string>
-    <string name="no_results">No results yet</string>
-    <string name="no_results_hint">Create an image first~</string>
-    <string name="go_to_generate">Create</string>
-    <string name="prompt_tab">Prompt</string>
-    <string name="result_tab">Result</string>
-    <string name="confirm_exit">Confirm to Exit</string>
-    <string name="confirm_exit_hint">Generation in progress, Are you sure to Exit?</string>
-    <string name="reset">Reset</string>
-    <string name="reset_hint">Reset all parameters? This action cannot be undone. </string>
-    <string name="media_permission_hint">Media permission is needed for img2img generation</string>
-    <string name="backend_failed">Backend start failed. Maybe your device is not supported.</string>
+    <string name="no_results">결과가 없습니다</string>
+    <string name="no_results_hint">먼저 이미지를 생성해보세요~</string>
+    <string name="go_to_generate">생성</string>
+    <string name="prompt_tab">프롬프트</string>
+    <string name="result_tab">결과</string>
+    <string name="confirm_exit">종료 확인</string>
+    <string name="confirm_exit_hint">생성이 진행 중입니다. 정말 종료하시겠습니까?</string>
+    <string name="reset">초기화</string>
+    <string name="reset_hint">모든 매개변수를 초기화하시겠습니까? 이 작업은 되돌릴 수 없습니다.</string>
+    <string name="media_permission_hint">img2img 생성을 위해 미디어 권한이 필요합니다</string>
+    <string name="backend_failed">백엔드 시작 실패. 기기가 지원되지 않을 수 있습니다.</string>
 
     <!-- Parameter Settings -->
-    <string name="generation_params">Generation Params</string>
-    <string name="steps">Steps: %d</string>
-    <string name="cfg_scale">CFG Scale: %.1f</string>
-    <string name="image_size">Image Size: %1$dx%2$d</string>
-    <string name="random_seed">Random Seed (Optional)</string>
-    <string name="use_last_seed">Use Last Seed (%s)</string>
-    <string name="result_params">steps: %s / CFG: %.1f / seed: %s"</string>
-    <string name="result_params_2">size: %s / time: %s / %s"</string>
-    <string name="params_detail">Details</string>
-    <string name="basic_params">Basic</string>
-    <string name="basic_step">Steps: %d</string>
-    <string name="basic_size">Size: %dx%d</string>
-    <string name="basic_seed">Seed: %s</string>
-    <string name="basic_runtime">Runtime: %s</string>
-    <string name="basic_time">Time: %s</string>
+    <string name="generation_params">생성 매개변수</string>
+    <string name="steps">스텝: %d</string>
+    <string name="cfg_scale">CFG 스케일: %.1f</string>
+    <string name="image_size">이미지 크기: %1$dx%2$d</string>
+    <string name="random_seed">랜덤 시드 (선택사항)</string>
+    <string name="use_last_seed">마지막 시드 사용 (%s)</string>
+    <string name="result_params">스텝: %s / CFG: %.1f / 시드: %s</string>
+    <string name="result_params_2">크기: %s / 시간: %s / %s</string>
+    <string name="params_detail">세부 정보</string>
+    <string name="basic_params">기본</string>
+    <string name="basic_step">스텝: %d</string>
+    <string name="basic_size">크기: %dx%d</string>
+    <string name="basic_seed">시드: %s</string>
+    <string name="basic_runtime">실행환경: %s</string>
+    <string name="basic_time">시간: %s</string>
 
     <!-- Error Messages -->
-    <string name="error_device_not_supported">Your device is not supported yet, please use CPU version</string>
-    <string name="error_download_failed">Download failed: %s</string>
-    <string name="error_request_failed">Request failed: %s</string>
-    <string name="error_generation_failed">Generation failed: %s</string>
-    <string name="unknown_error">unknown error</string>
+    <string name="error_device_not_supported">기기가 아직 지원되지 않습니다. CPU 버전을 사용해 주세요</string>
+    <string name="error_download_failed">다운로드 실패: %s</string>
+    <string name="error_request_failed">요청 실패: %s</string>
+    <string name="error_generation_failed">생성 실패: %s</string>
+    <string name="unknown_error">알 수 없는 오류</string>
 
     <!-- Info Messages -->
-    <string name="image_saved">Image saved to gallery</string>
-    <string name="loading_model">Loading model…</string>
+    <string name="image_saved">이미지가 갤러리에 저장되었습니다</string>
+    <string name="loading_model">모델 로딩 중…</string>
+
+    <!-- 추가 ModelRunScreen 문자열들 -->
+    <string name="img2img">이미지 투 이미지</string>
+    <string name="select_image">이미지 선택</string>
+    <string name="use_image">이미지 사용</string>
+    <string name="report_inappropriate_content">부적절한 콘텐츠 신고</string>
+    <string name="save_image">이미지 저장</string>
+    <string name="generated_image">생성된 이미지</string>
+    <string name="cropped_image">자른 이미지</string>
+    <string name="selected_image">선택된 이미지</string>
+    <string name="remove_image">이미지 제거</string>
+    <string name="set_mask">마스크 설정</string>
+    <string name="mask_image">마스크 이미지</string>
+    <string name="clear_mask">마스크 지우기</string>
+    <string name="please_crop_first">먼저 자르기를 해주세요</string>
+    <string name="save_failed">저장 실패</string>
+    <string name="image_sent_to_tokkit">이미지를 Tokkit으로 전송했습니다!</string>
+    <string name="image_send_failed">이미지 전송 실패</string>
+    <string name="need_storage_permission">이미지 저장을 위해 저장소 권한이 필요합니다</string>
+    <string name="report">신고</string>
+    <string name="report_image_question">이 이미지를 신고하시겠습니까?</string>
+    <string name="report_description">부적절하다고 생각되면 이미지를 신고하세요. 매개변수와 이미지가 검토를 위해 서버로 전송됩니다.</string>
+    <string name="thanks_for_report">신고해 주셔서 감사합니다.</string>
+    <string name="report_error">오류: %s</string>
+    <string name="expand">확장</string>
+    <string name="collapse">축소</string>
+    <string name="complete_marking">마킹 완료</string>
+    <string name="preview_image">이미지 미리보기</string>
+    <string name="close_preview">미리보기 닫기</string>
+    <string name="reset_zoom">줌 초기화</string>
+    <string name="error">오류</string>
+    <string name="ok">확인</string>
+    <string name="network_error">네트워크 오류</string>
+    <string name="denoise_strength">디노이즈 강도: %.2f</string>
+    <string name="use_img2img">img2img 사용</string>
+    <string name="use_img2img_description">img2img 기능을 사용합니다. 필요하지 않거나 문제가 발생하면 끄세요.</string>
 </resources>
