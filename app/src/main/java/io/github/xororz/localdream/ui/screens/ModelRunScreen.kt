@@ -106,6 +106,12 @@ import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.IconButtonDefaults
 import kotlinx.coroutines.CoroutineScope
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+
+
+
 
 private suspend fun reportImage(
     context: Context,
@@ -388,6 +394,10 @@ fun ModelRunScreen(
     var savedPathHistory by remember { mutableStateOf<List<PathData>?>(null) }
 
     var saveAllJob: Job? by remember { mutableStateOf(null) }
+
+    val customPurple = Color(0xFFC89AFF)
+
+
 
     fun saveAllFields() {
         saveAllJob?.cancel()
@@ -938,8 +948,17 @@ fun ModelRunScreen(
                 focusManager.clearFocus()
             }
     ) {
+        // 배경 이미지 추가
+        Image(
+            painter = painterResource(id = R.drawable.ic_background),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.FillBounds,
+        )
+
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            containerColor = Color.Transparent, // Scaffold 배경을 투명하게
             topBar = {
                 LargeTopAppBar(
                     title = {
@@ -1055,7 +1074,10 @@ fun ModelRunScreen(
                                                     TextButton(
                                                         onClick = {
                                                             onSelectImageClick()
-                                                        }
+                                                        },
+                                                        colors = ButtonDefaults.textButtonColors(
+                                                            contentColor = customPurple
+                                                        )
                                                     ) {
                                                         Text(
                                                             "img2img",
@@ -1065,12 +1087,16 @@ fun ModelRunScreen(
                                                         Icon(
                                                             Icons.Default.Image,
                                                             contentDescription = "select image",
-                                                            modifier = Modifier.size(20.dp)
+                                                            modifier = Modifier.size(20.dp),
+                                                            tint = customPurple
                                                         )
                                                     }
                                                 }
                                                 TextButton(
-                                                    onClick = { showAdvancedSettings = true }
+                                                    onClick = { showAdvancedSettings = true },
+                                                    colors = ButtonDefaults.textButtonColors(
+                                                        contentColor = customPurple
+                                                    )
                                                 ) {
                                                     Text(
                                                         stringResource(R.string.advanced_settings),
@@ -1080,7 +1106,8 @@ fun ModelRunScreen(
                                                     Icon(
                                                         Icons.Default.Settings,
                                                         contentDescription = stringResource(R.string.settings),
-                                                        modifier = Modifier.size(20.dp)
+                                                        modifier = Modifier.size(20.dp),
+                                                        tint = customPurple
                                                     )
                                                 }
                                             }
@@ -1113,7 +1140,12 @@ fun ModelRunScreen(
                                                                     },
                                                                     valueRange = 1f..50f,
                                                                     steps = 48,
-                                                                    modifier = Modifier.fillMaxWidth()
+                                                                    modifier = Modifier.fillMaxWidth(),
+                                                                    colors = SliderDefaults.colors(
+                                                                        thumbColor = customPurple,
+                                                                        activeTrackColor = customPurple,
+                                                                        inactiveTrackColor = customPurple.copy(alpha = 0.3f)
+                                                                    )
                                                                 )
                                                             }
 
@@ -1130,7 +1162,12 @@ fun ModelRunScreen(
                                                                     },
                                                                     valueRange = 1f..30f,
                                                                     steps = 57,
-                                                                    modifier = Modifier.fillMaxWidth()
+                                                                    modifier = Modifier.fillMaxWidth(),
+                                                                    colors = SliderDefaults.colors(
+                                                                        thumbColor = customPurple,
+                                                                        activeTrackColor = customPurple,
+                                                                        inactiveTrackColor = customPurple.copy(alpha = 0.3f)
+                                                                    )
                                                                 )
                                                             }
                                                             if (model.runOnCpu) {
@@ -1344,8 +1381,9 @@ fun ModelRunScreen(
                                             minLines = if (expandedPrompt) 3 else 2,
                                             shape = MaterialTheme.shapes.medium,
                                             colors = OutlinedTextFieldDefaults.colors(
-                                                focusedBorderColor = MaterialTheme.colorScheme.primary,
-                                                unfocusedBorderColor = MaterialTheme.colorScheme.outline
+                                                focusedBorderColor = customPurple,
+                                                focusedLabelColor = customPurple,
+                                                cursorColor = customPurple
                                             ),
                                             trailingIcon = {
                                                 IconButton(onClick = {
@@ -1377,8 +1415,9 @@ fun ModelRunScreen(
                                             minLines = if (expandedNegativePrompt) 3 else 2,
                                             shape = MaterialTheme.shapes.medium,
                                             colors = OutlinedTextFieldDefaults.colors(
-                                                focusedBorderColor = MaterialTheme.colorScheme.primary,
-                                                unfocusedBorderColor = MaterialTheme.colorScheme.outline
+                                                focusedBorderColor = customPurple,
+                                                focusedLabelColor = customPurple,
+                                                cursorColor = customPurple
                                             ),
                                             trailingIcon = {
                                                 IconButton(onClick = {
@@ -1445,7 +1484,12 @@ fun ModelRunScreen(
                                             },
                                             enabled = serviceState !is GenerationState.Progress,
                                             modifier = Modifier.fillMaxWidth(),
-                                            shape = MaterialTheme.shapes.medium
+                                            shape = MaterialTheme.shapes.medium,
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = customPurple,
+                                                contentColor = Color.White
+                                            )
+
                                         ) {
                                             if (serviceState is GenerationState.Progress) {
                                                 CircularProgressIndicator(
@@ -1511,6 +1555,8 @@ fun ModelRunScreen(
                                             LinearProgressIndicator(
                                                 progress = { progress },
                                                 modifier = Modifier.fillMaxWidth(),
+                                                color = customPurple,
+                                                trackColor = customPurple.copy(alpha = 0.3f)
                                             )
                                             Text(
                                                 "${(progress * 100).toInt()}%",
