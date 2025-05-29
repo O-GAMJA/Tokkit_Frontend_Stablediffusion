@@ -110,6 +110,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 
+private const val DEFAULT_NEGATIVE_PROMPT = "lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, blur, simple background, mutation, deformed, ugly, duplicate, error, jpeg artifacts"
 
 
 
@@ -1422,11 +1423,11 @@ fun ModelRunScreen(
                                         }
 
                                         var expandedPrompt by remember { mutableStateOf(false) }
-                                        var expandedNegativePrompt by remember {
-                                            mutableStateOf(
-                                                false
-                                            )
-                                        }
+//                                        var expandedNegativePrompt by remember {
+//                                            mutableStateOf(
+//                                                false
+//                                            )
+//                                        }
 
                                         OutlinedTextField(
                                             value = prompt,
@@ -1462,39 +1463,39 @@ fun ModelRunScreen(
                                             }
                                         )
 
-                                        OutlinedTextField(
-                                            value = negativePrompt,
-                                            onValueChange = {
-                                                negativePrompt = it
-                                                saveAllFields()
-                                            },
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .clickable(
-                                                    interactionSource = interactionSource,
-                                                    indication = null
-                                                ) { },
-                                            label = { Text(stringResource(R.string.negative_prompt)) },
-                                            maxLines = if (expandedNegativePrompt) Int.MAX_VALUE else 2,
-                                            minLines = if (expandedNegativePrompt) 3 else 2,
-                                            shape = MaterialTheme.shapes.medium,
-                                            colors = OutlinedTextFieldDefaults.colors(
-                                                focusedBorderColor = customPurple,
-                                                focusedLabelColor = customPurple,
-                                                cursorColor = customPurple
-                                            ),
-                                            trailingIcon = {
-                                                IconButton(onClick = {
-                                                    expandedNegativePrompt = !expandedNegativePrompt
-                                                }) {
-                                                    Icon(
-                                                        if (expandedNegativePrompt) Icons.Default.KeyboardArrowUp
-                                                        else Icons.Default.KeyboardArrowDown,
-                                                        contentDescription = if (expandedNegativePrompt) "collapse" else "expand"
-                                                    )
-                                                }
-                                            }
-                                        )
+//                                        OutlinedTextField(
+//                                            value = negativePrompt,
+//                                            onValueChange = {
+//                                                negativePrompt = it
+//                                                saveAllFields()
+//                                            },
+//                                            modifier = Modifier
+//                                                .fillMaxWidth()
+//                                                .clickable(
+//                                                    interactionSource = interactionSource,
+//                                                    indication = null
+//                                                ) { },
+//                                            label = { Text(stringResource(R.string.negative_prompt)) },
+//                                            maxLines = if (expandedNegativePrompt) Int.MAX_VALUE else 2,
+//                                            minLines = if (expandedNegativePrompt) 3 else 2,
+//                                            shape = MaterialTheme.shapes.medium,
+//                                            colors = OutlinedTextFieldDefaults.colors(
+//                                                focusedBorderColor = customPurple,
+//                                                focusedLabelColor = customPurple,
+//                                                cursorColor = customPurple
+//                                            ),
+//                                            trailingIcon = {
+//                                                IconButton(onClick = {
+//                                                    expandedNegativePrompt = !expandedNegativePrompt
+//                                                }) {
+//                                                    Icon(
+//                                                        if (expandedNegativePrompt) Icons.Default.KeyboardArrowUp
+//                                                        else Icons.Default.KeyboardArrowDown,
+//                                                        contentDescription = if (expandedNegativePrompt) "collapse" else "expand"
+//                                                    )
+//                                                }
+//                                            }
+//                                        )
 
                                         Button(
                                             onClick = {
