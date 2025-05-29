@@ -461,7 +461,7 @@ fun ModelRunScreen(
                 base64EncodeDone = true
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Save failed: ${e.message}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Save failed: ${e.message}", Toast.LENGTH_SHORT).show()
                     selectedImageUri = null
                     croppedBitmap = null
                 }
@@ -493,7 +493,7 @@ fun ModelRunScreen(
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Save failed: ${e.message}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Save failed: ${e.message}", Toast.LENGTH_SHORT).show()
                     isInpaintMode = false
                     maskBitmap = null
                     savedPathHistory = null
@@ -520,11 +520,11 @@ fun ModelRunScreen(
         if (isGranted) {
             contentPickerLauncher.launch("image/*")
         } else {
-            Toast.makeText(
-                context,
-                context.getString(R.string.media_permission_hint),
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                context,
+//                context.getString(R.string.media_permission_hint),
+//                Toast.LENGTH_SHORT
+//            ).show()
         }
     }
 
@@ -713,11 +713,13 @@ fun ModelRunScreen(
                 Log.d("LocalDream", "인텐트 전송 완료")
 
                 // 성공 메시지 표시
-                Toast.makeText(context, "이미지를 Tokkit으로 전송했습니다!", Toast.LENGTH_SHORT).show()
+
+                TODO()
+//                Toast.makeText(context, "이미지를 Tokkit으로 전송했습니다!", Toast.LENGTH_SHORT).show()
 
             } catch (e: Exception) {
                 android.util.Log.e("LocalDream", "이미지 전송 실패", e)
-                Toast.makeText(context, "이미지 전송에 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "이미지 전송에 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -1710,11 +1712,11 @@ fun ModelRunScreen(
                                                             if (croppedBitmap != null) {
                                                                 showInpaintScreen = true
                                                             } else {
-                                                                Toast.makeText(
-                                                                    context,
-                                                                    "Please Crop First",
-                                                                    Toast.LENGTH_SHORT
-                                                                ).show()
+//                                                                Toast.makeText(
+//                                                                    context,
+//                                                                    "Please Crop First",
+//                                                                    Toast.LENGTH_SHORT
+//                                                                ).show()
                                                             }
                                                         },
                                                         shape = CircleShape,
@@ -1908,11 +1910,11 @@ fun ModelRunScreen(
                                                                         ).show()
                                                                     },
                                                                     onError = { error ->
-                                                                        Toast.makeText(
-                                                                            context,
-                                                                            error,
-                                                                            Toast.LENGTH_SHORT
-                                                                        ).show()
+//                                                                        Toast.makeText(
+//                                                                            context,
+//                                                                            error,
+//                                                                            Toast.LENGTH_SHORT
+//                                                                        ).show()
                                                                     }
                                                                 )
                                                             }
@@ -2039,18 +2041,18 @@ fun ModelRunScreen(
                                                                 modelName = model.name,
                                                                 params = generationParams!!,
                                                                 onSuccess = {
-                                                                    Toast.makeText(
-                                                                        context,
-                                                                        "Thanks for your report.",
-                                                                        Toast.LENGTH_SHORT
-                                                                    ).show()
+//                                                                    Toast.makeText(
+//                                                                        context,
+//                                                                        "Thanks for your report.",
+//                                                                        Toast.LENGTH_SHORT
+//                                                                    ).show()
                                                                 },
                                                                 onError = { error ->
-                                                                    Toast.makeText(
-                                                                        context,
-                                                                        "Error: $error",
-                                                                        Toast.LENGTH_SHORT
-                                                                    ).show()
+//                                                                    Toast.makeText(
+//                                                                        context,
+//                                                                        "Error: $error",
+//                                                                        Toast.LENGTH_SHORT
+//                                                                    ).show()
                                                                 }
                                                             )
                                                         }

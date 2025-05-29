@@ -30,11 +30,11 @@ class MainActivity : ComponentActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (!isGranted) {
-            Toast.makeText(
-                this,
-                "Storage permission is required for saving generated images",
-                Toast.LENGTH_LONG
-            ).show()
+//            Toast.makeText(
+//                this,
+//                "Storage permission is required for saving generated images",
+//                Toast.LENGTH_LONG
+//            ).show()
         }
     }
 
@@ -42,11 +42,11 @@ class MainActivity : ComponentActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (!isGranted) {
-            Toast.makeText(
-                this,
-                "Notification permission is required for background image generation",
-                Toast.LENGTH_LONG
-            ).show()
+//            Toast.makeText(
+//                this,
+//                "Notification permission is required for background image generation",
+//                Toast.LENGTH_LONG
+//            ).show()
         }
     }
 
@@ -62,11 +62,11 @@ class MainActivity : ComponentActivity() {
                 }
 
                 shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
-                    Toast.makeText(
-                        this,
-                        "Storage permission is needed for saving generated images",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        this,
+//                        "Storage permission is needed for saving generated images",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                     requestStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 }
 
@@ -89,11 +89,11 @@ class MainActivity : ComponentActivity() {
                 }
 
                 shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
-                    Toast.makeText(
-                        this,
-                        "Notification permission is needed for background image generation",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        this,
+//                        "Notification permission is needed for background image generation",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                     requestNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 }
 
